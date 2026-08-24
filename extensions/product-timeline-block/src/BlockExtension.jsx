@@ -52,7 +52,7 @@ function Extension() {
         throw new Error('No notes array found');
       }
       const sorted = [...notesArray].sort(
-        (a, b) => new Date(a.event_dstp) - new Date(b.event_dstp)
+        (a, b) => new Date(b.event_dstp) - new Date(a.event_dstp)
       );
       setNotes(sorted);
     }
