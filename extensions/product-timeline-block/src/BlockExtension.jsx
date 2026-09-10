@@ -67,45 +67,73 @@ function Extension() {
 
   return (
     <s-admin-block heading="Product Timeline">
-      <s-stack direction="block" gap="none">
-        {notes && notes.map((note, i) => (
-          <s-stack key={i} direction="inline" gap="base" alignItems="start">
-            <s-stack direction="block" alignItems="center" gap="none">
-              <s-box
-                inlineSize="2px"
-                blockSize="8px"
-                background={i > 0 ? "strong" : "transparent"}
-              />
-              <s-stack
-                direction="block"
-                alignItems="center"
-                justifyContent="center"
-                inlineSize="15px"
-                blockSize="15px"
-                borderRadius="small-200"
-                background="strong"
-              >
-                <s-icon type="bullet" color="base" tone="neutral" size="base"/>
-              </s-stack>
-              {i < notes.length - 1 && (
-                <s-box
-                  inlineSize="2px"
-                  blockSize="44px"
-                  background="strong"
-                />
-              )}
+
+      <s-stack direction="block" gap="large">
+        {/* Product Stats section */}
+        <s-stack direction="block" gap="none">
+          <s-heading>Product Stats</s-heading>
+          <s-stack direction="inline" gap="large-500">
+            <s-stack direction="block" gap="none">
+              <s-text tone="neutral">Number of Days Live: </s-text>
+              <s-text tone="neutral">Number of Days Full Price: </s-text>
+              <s-text tone="neutral">Number of Days Hard Mark: </s-text>
+              <s-text tone="neutral">Number of Days Promo: </s-text>
             </s-stack>
             <s-stack direction="block" gap="none">
-              <s-text type="strong">{note.event_title}</s-text>
-              <s-text tone="neutral">
-                {new Date(note.event_dstp).toLocaleString('en-US', {
-                  dateStyle: 'medium',
-                  timeStyle: 'short',
-                })}
-              </s-text>
+              <s-text tone="neutral">Active Date: </s-text>
+              <s-text tone="neutral">Rolling Date: </s-text>
+              <s-text tone="neutral">Active for 90+: </s-text>
+              <s-text tone="neutral">1st Markdown: </s-text>
             </s-stack>
           </s-stack>
-        ))}
+        </s-stack>
+
+        {/* Timeline */}
+        <s-stack direction="block" gap="none">
+          <s-heading>Product Timeline</s-heading>
+          <s-heading>Current Timeline</s-heading>
+          {notes && notes.map((note, i) => (
+            <s-stack key={i} direction="inline" gap="base" alignItems="start">
+              <s-stack direction="block" alignItems="center" gap="none">
+                <s-box
+                  inlineSize="2px"
+                  blockSize="8px"
+                  background={i > 0 ? "strong" : "transparent"}
+                />
+                <s-stack
+                  direction="block"
+                  alignItems="center"
+                  justifyContent="center"
+                  inlineSize="15px"
+                  blockSize="15px"
+                  borderRadius="small-200"
+                  background="strong"
+                >
+                  <s-icon type="bullet" color="base" tone="neutral" size="base"/>
+                </s-stack>
+                {i < notes.length - 1 && (
+                  <s-box
+                    inlineSize="2px"
+                    blockSize="44px"
+                    background="strong"
+                  />
+                )}
+              </s-stack>
+              <s-stack direction="block" gap="none">
+                <s-text type="strong">{note.event_title}</s-text>
+                <s-text tone="neutral">
+                  {new Date(note.event_dstp).toLocaleString('en-US', {
+                    dateStyle: 'medium',
+                    timeStyle: 'short',
+                  })}
+                </s-text>
+              </s-stack>
+            </s-stack>
+          ))}
+        </s-stack>
+
+        <s-text tone="neutral">Process Run Date: </s-text>
+
       </s-stack>
     </s-admin-block>
   );
