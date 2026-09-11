@@ -115,6 +115,8 @@ function Extension() {
           </s-stack>
         </s-stack>
 
+        <s-text tone="neutral">Process Run Date: {formatDate(stats?.processRunDate)}</s-text>
+
         {/* Timeline */}
         <s-stack direction="block" gap="none">
           <s-heading>Product Timeline</s-heading>
@@ -158,8 +160,6 @@ function Extension() {
             </s-stack>
           ))}
         </s-stack>
-
-        <s-text tone="neutral">Process Run Date: {formatDate(stats?.processRunDate)}</s-text>
 
       </s-stack>
     </s-admin-block>
