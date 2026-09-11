@@ -169,10 +169,11 @@ function Extension() {
 function formatDate(date) {
   if (!date || date === '-') return '-';
 
-  const parsed = new Date(date);
-  if (isNaN(parsed.getTime())) return '-';
+  const [year, month, day] = date.split('-').map(Number);
+  if (!year || !month || !day) return '-';
 
-  return new Date(date).toLocaleString('en-US', {
+  const localDate = new Date(year, month - 1, day); // local time, no UTC shift
+  return localDate.toLocaleString('en-US', {
     month: '2-digit',
     day: '2-digit',
     year: 'numeric',
